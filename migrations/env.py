@@ -18,7 +18,17 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-target_metadata = None
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+
+from codeqa.config import get_settings
+from codeqa.models import Base
+
+target_metadata = Base.metadata
+config.set_main_option("sqlalchemy.url", get_settings().database_url)
+
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
