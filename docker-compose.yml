@@ -5,7 +5,7 @@ services:
       POSTGRES_USER: codeqa
       POSTGRES_PASSWORD: codeqa
       POSTGRES_DB: codeqa
-    ports: ["5432:5432"]
+    ports: ["5433:5432"]
     volumes: ["pgdata:/var/lib/postgresql/data"]
   qdrant:
     image: qdrant/qdrant:v1.11.0   # pin the exact tag you test with
